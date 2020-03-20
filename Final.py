@@ -1,4 +1,6 @@
 from random import randint
+#with open ("pokus.txt", "r") as txt_file:
+#    mesta = txt_file.read()
 
 mesta = [[0, 1, 2], [1, 0, 3], [2, 3, 0]]
 POCET_MIEST = len(mesta)
