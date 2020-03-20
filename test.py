@@ -1,1 +1,2 @@
-print ("hello world")
+message = "pokus"
+print(message)
