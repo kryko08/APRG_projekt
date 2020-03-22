@@ -17,7 +17,7 @@ def generovanie_ludi(POCET_MIEST):
 
         for n2 in range(1, POCET_MIEST + 1):
             n3 = randint(0, POCET_MIEST - n2)
-            mesta.append(cisla[n3])
+            mesta.append(cisla.pop(n3))
         clovek.append(mesta)
         ludia.append(clovek)
     return ludia
