@@ -4,7 +4,7 @@ from random import randint
 
 ZOZNAM_MIEST = [[0, 1, 2], [1, 0, 3], [2, 3, 0]]
 POCET_MIEST = len(ZOZNAM_MIEST)
-POCET_LUDI = 10
+POCET_LUDI = 3
 ludia=[]
 
 def generovanie_ludi(POCET_MIEST, POCET_LUDI):
@@ -29,16 +29,30 @@ def hodnota(ludia, POCET_MIEST, POCET_LUDI, ZOZNAM_MIEST):
             kvalita = kvalita + ZOZNAM_MIEST[ludia[m][0][m1]-1][ludia[m][0][m1+1]-1]
         ludia[m].insert(0, kvalita)
     return(ludia)
+
 def serazeni_kvality(ludia):
-    serazeni = sorted(ludia)
-    return serazeni
+    sorted_ludia = sorted(ludia)
+    return sorted_ludia
+
+def selekce(sorted_ludia, POCET_LUDI):
+    konstanta = POCET_LUDI
+    selekce_lidi = []
+    for prvek in range(len(sorted_ludia)):
+        nasobeni = konstanta - prvek
+        index = 0
+        while index < nasobeni :
+            selekce_lidi.append(sorted_ludia[prvek])
+            index = index + 1
+    return selekce_lidi
+
 
 def main(POCET_MIEST, POCET_LUDI, ZOZNAM_MIEST):
     generovanie_ludi(POCET_MIEST,POCET_LUDI)
     hodnota(ludia, POCET_MIEST, POCET_LUDI, ZOZNAM_MIEST)
-    print(ludia)
-    serazeni = serazeni_kvality(ludia)
-    print(serazeni)
+    sorted_ludia = serazeni_kvality(ludia)
+    selekce_lidi = selekce(sorted_ludia, POCET_LUDI)
+    print(sorted_ludia)
+    print(selekce_lidi)
 
 if __name__ == "__main__":
     main(POCET_MIEST,POCET_LUDI, ZOZNAM_MIEST)
