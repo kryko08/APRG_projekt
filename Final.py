@@ -21,5 +21,10 @@ def generovanie_ludi(POCET_MIEST):
         clovek.append(mesta)
         ludia.append(clovek)
     return ludia
-generovanie_ludi(POCET_MIEST)
-print(ludia)
+
+def main(POCET_MIEST):
+    generovanie_ludi(POCET_MIEST)
+    print(ludia)
+
+if __name__ == "__main__":
+main(POCET_MIEST)
