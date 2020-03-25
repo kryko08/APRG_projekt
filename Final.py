@@ -27,13 +27,18 @@ def hodnota(ludia, POCET_MIEST, POCET_LUDI, ZOZNAM_MIEST):
         kvalita = 0
         for m1 in range(POCET_MIEST-1):
             kvalita = kvalita + ZOZNAM_MIEST[ludia[m][0][m1]-1][ludia[m][0][m1+1]-1]
-        ludia[m].append(kvalita)
+        ludia[m].insert(0, kvalita)
     return(ludia)
+def serazeni_kvality(ludia):
+    serazeni = sorted(ludia)
+    return serazeni
 
 def main(POCET_MIEST, POCET_LUDI, ZOZNAM_MIEST):
     generovanie_ludi(POCET_MIEST,POCET_LUDI)
     hodnota(ludia, POCET_MIEST, POCET_LUDI, ZOZNAM_MIEST)
     print(ludia)
+    serazeni = serazeni_kvality(ludia)
+    print(serazeni)
 
 if __name__ == "__main__":
     main(POCET_MIEST,POCET_LUDI, ZOZNAM_MIEST)
