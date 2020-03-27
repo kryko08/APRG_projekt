@@ -2,57 +2,57 @@ from random import randint
 #with open ("pokus.txt", "r") as txt_file:
 #    mesta = txt_file.read()
 
-ZOZNAM_MIEST = [[0, 1, 2], [1, 0, 3], [2, 3, 0]]
-POCET_MIEST = len(ZOZNAM_MIEST)
-POCET_LUDI = 3
-ludia=[]
+LIST_OF_CITIES = [[0, 1, 2], [1, 0, 3], [2, 3, 0]]
+NUM_OF_CITIES = len(LIST_OF_CITIES)
+NUM_OF_PEOPLE = 3
+people = []
 
-def generovanie_ludi(POCET_MIEST, POCET_LUDI):
-    for n in range(POCET_LUDI):
-        cisla = []
-        clovek = []
-        mesta = []
-        for n1 in range(1, POCET_MIEST + 1):
-            cisla.append(n1)
+def people_generating(NUM_OF_CITIES, NUM_OF_PEOPLE):
+    for n in range(NUM_OF_PEOPLE):
+        numbers = []
+        person = []
+        cities = []
+        for n1 in range(1, NUM_OF_CITIES + 1):
+            numbers.append(n1)
 
-        for n2 in range(1, POCET_MIEST + 1):
-            n3 = randint(0, POCET_MIEST - n2)
-            mesta.append(cisla.pop(n3))
-        clovek.append(mesta)
-        ludia.append(clovek)
-    return (ludia)
+        for n2 in range(1, NUM_OF_CITIES + 1):
+            n3 = randint(0, NUM_OF_CITIES - n2)
+            cities.append(numbers.pop(n3))
+        person.append(cities)
+        people.append(person)
+    return (people)
 
-def hodnota(ludia, POCET_MIEST, POCET_LUDI, ZOZNAM_MIEST):
-    for m in range(POCET_LUDI):
-        kvalita = 0
-        for m1 in range(POCET_MIEST-1):
-            kvalita = kvalita + ZOZNAM_MIEST[ludia[m][0][m1]-1][ludia[m][0][m1+1]-1]
-        ludia[m].insert(0, kvalita)
-    return(ludia)
+def value(people, NUM_OF_CITIES, NUM_OF_PEOPLE, LIST_OF_CITIES):
+    for m in range(NUM_OF_PEOPLE):
+        quality = 0
+        for m1 in range(NUM_OF_CITIES - 1):
+            quality = quality + LIST_OF_CITIES[people[m][0][m1] - 1][people[m][0][m1 + 1] - 1]
+        people[m].insert(0, quality)
+    return(people)
 
-def serazeni_kvality(ludia):
-    sorted_ludia = sorted(ludia)
-    return sorted_ludia
+def quality_sorting(people):
+    sorted_people = sorted(people)
+    return sorted_people
 
-def selekce(sorted_ludia, POCET_LUDI):
-    konstanta = POCET_LUDI
-    selekce_lidi = []
-    for prvek in range(len(sorted_ludia)):
-        nasobeni = konstanta - prvek
+def selection(sorted_people, NUM_OF_PEOPLE):
+    CONSTANT = NUM_OF_PEOPLE
+    people_selection = []
+    for element in range(len(sorted_people)):
+        multipation = CONSTANT - element
         index = 0
-        while index < nasobeni :
-            selekce_lidi.append(sorted_ludia[prvek])
+        while index < multipation :
+            people_selection.append(sorted_people[element])
             index = index + 1
-    return selekce_lidi
+    return people_selection
 
 
-def main(POCET_MIEST, POCET_LUDI, ZOZNAM_MIEST):
-    generovanie_ludi(POCET_MIEST,POCET_LUDI)
-    hodnota(ludia, POCET_MIEST, POCET_LUDI, ZOZNAM_MIEST)
-    sorted_ludia = serazeni_kvality(ludia)
-    selekce_lidi = selekce(sorted_ludia, POCET_LUDI)
-    print(sorted_ludia)
-    print(selekce_lidi)
+def main(NUM_OF_CITIES, NUM_OF_PEOPLE, LIST_OF_CITIES):
+    people_generating(NUM_OF_CITIES, NUM_OF_PEOPLE)
+    value(people, NUM_OF_CITIES, NUM_OF_PEOPLE, LIST_OF_CITIES)
+    sorted_people = quality_sorting(people)
+    people_selection = selection(sorted_people, NUM_OF_PEOPLE)
+    print(sorted_people)
+    print(people_selection)
 
 if __name__ == "__main__":
-    main(POCET_MIEST,POCET_LUDI, ZOZNAM_MIEST)
+    main(NUM_OF_CITIES, NUM_OF_PEOPLE, LIST_OF_CITIES)
