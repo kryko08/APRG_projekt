@@ -7,7 +7,7 @@ NUM_OF_CITIES = len(LIST_OF_CITIES)
 NUM_OF_PEOPLE = 3
 people = []
 
-def people_generating(NUM_OF_CITIES, NUM_OF_PEOPLE):
+def people_generating():
     for n in range(NUM_OF_PEOPLE):
         numbers = []
         person = []
@@ -22,7 +22,7 @@ def people_generating(NUM_OF_CITIES, NUM_OF_PEOPLE):
         people.append(person)
     return (people)
 
-def value(people, NUM_OF_CITIES, NUM_OF_PEOPLE, LIST_OF_CITIES):
+def value(people, LIST_OF_CITIES):
     for m in range(NUM_OF_PEOPLE):
         quality = 0
         for m1 in range(NUM_OF_CITIES - 1):
@@ -32,27 +32,28 @@ def value(people, NUM_OF_CITIES, NUM_OF_PEOPLE, LIST_OF_CITIES):
 
 def quality_sorting(people):
     sorted_people = sorted(people)
-    return sorted_people
+    people.clear()
+    people.extend(sorted_people)
+    return people
 
-def selection(sorted_people, NUM_OF_PEOPLE):
-    CONSTANT = NUM_OF_PEOPLE
+def selection(people, NUM_OF_PEOPLE):
     people_selection = []
-    for element in range(len(sorted_people)):
-        multipation = CONSTANT - element
+    for element in range(len(people)):
+        multipation = NUM_OF_PEOPLE - element
         index = 0
         while index < multipation :
-            people_selection.append(sorted_people[element])
+            people_selection.append(people[element])
             index = index + 1
     return people_selection
 
 
-def main(NUM_OF_CITIES, NUM_OF_PEOPLE, LIST_OF_CITIES):
-    people_generating(NUM_OF_CITIES, NUM_OF_PEOPLE)
-    value(people, NUM_OF_CITIES, NUM_OF_PEOPLE, LIST_OF_CITIES)
-    sorted_people = quality_sorting(people)
-    people_selection = selection(sorted_people, NUM_OF_PEOPLE)
-    print(sorted_people)
+def main(LIST_OF_CITIES):
+    people_generating()
+    value(people, LIST_OF_CITIES)
+    quality_sorting(people)
+    people_selection = selection(people, NUM_OF_PEOPLE)
+    print(people)
     print(people_selection)
 
 if __name__ == "__main__":
-    main(NUM_OF_CITIES, NUM_OF_PEOPLE, LIST_OF_CITIES)
+    main(LIST_OF_CITIES)
