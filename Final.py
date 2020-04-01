@@ -1,4 +1,5 @@
 from random import randint
+import random
 #with open ("pokus.txt", "r") as txt_file:
 #    mesta = txt_file.read()
 
@@ -46,6 +47,12 @@ def selection(people, NUM_OF_PEOPLE):
             index = index + 1
     return people_selection
 
+def selection_final(people_selection):
+    zuzeni_populace = []
+    delka = (len(people_selection) // 2)
+    rand_prvek = random.choices(people_selection, k = delka)
+    zuzeni_populace.extend(rand_prvek)
+    return zuzeni_populace
 
 def main(LIST_OF_CITIES):
     people_generating()
@@ -54,6 +61,8 @@ def main(LIST_OF_CITIES):
     people_selection = selection(people, NUM_OF_PEOPLE)
     print(people)
     print(people_selection)
+    new_selection = selection_final(people_selection)
+    print(new_selection)
 
 if __name__ == "__main__":
     main(LIST_OF_CITIES)
