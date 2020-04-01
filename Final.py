@@ -49,10 +49,20 @@ def selection(people, NUM_OF_PEOPLE):
 
 def selection_final(people_selection):
     zuzeni_populace = []
-    delka = (len(people_selection) // 2)
+    delka = NUM_OF_PEOPLE
     rand_prvek = random.choices(people_selection, k = delka)
     zuzeni_populace.extend(rand_prvek)
     return zuzeni_populace
+
+def mutace(new_selection):
+    mutace_jedinec = new_selection[randint(0, NUM_OF_PEOPLE - 1)][1]
+    poloha_prvek1 = randint(0, len(mutace_jedinec))
+    poloha_prvek2 = random.choice([i for i in range(0,len(mutace_jedinec)) if i not in [poloha_prvek1]])
+
+    print(mutace_jedinec, new_selection)
+    # new_selection.append([])
+    # new_selection[len(new_selection) - 1].append(mutace_jedinec)
+    return new_selection
 
 def main(LIST_OF_CITIES):
     people_generating()
@@ -62,6 +72,8 @@ def main(LIST_OF_CITIES):
     print(people)
     print(people_selection)
     new_selection = selection_final(people_selection)
+    print(new_selection)
+    mutace(new_selection)
     print(new_selection)
 
 if __name__ == "__main__":
