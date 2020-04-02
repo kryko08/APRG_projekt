@@ -8,6 +8,7 @@ NUM_OF_CITIES = len(LIST_OF_CITIES)
 NUM_OF_PEOPLE = 3
 people = []
 
+
 def people_generating():
     for n in range(NUM_OF_PEOPLE):
         numbers = []
@@ -23,6 +24,8 @@ def people_generating():
         people.append(person)
     return (people)
 
+
+
 def value(people, LIST_OF_CITIES):
     for m in range(NUM_OF_PEOPLE):
         quality = 0
@@ -31,11 +34,15 @@ def value(people, LIST_OF_CITIES):
         people[m].insert(0, quality)
     return(people)
 
+
+
 def quality_sorting(people):
     sorted_people = sorted(people)
     people.clear()
     people.extend(sorted_people)
     return people
+
+
 
 def selection(people, NUM_OF_PEOPLE):
     people_selection = []
@@ -47,6 +54,8 @@ def selection(people, NUM_OF_PEOPLE):
             index = index + 1
     return people_selection
 
+
+
 def selection_final(people_selection):
     zuzeni_populace = []
     delka = NUM_OF_PEOPLE
@@ -54,15 +63,35 @@ def selection_final(people_selection):
     zuzeni_populace.extend(rand_prvek)
     return zuzeni_populace
 
-def mutace(new_selection):
-    mutace_jedinec = new_selection[randint(0, NUM_OF_PEOPLE - 1)][1]
-    poloha_prvek1 = randint(0, len(mutace_jedinec))
-    poloha_prvek2 = random.choice([i for i in range(0,len(mutace_jedinec)) if i not in [poloha_prvek1]])
 
-    print(mutace_jedinec, new_selection)
+
+def odstraneni_kvality(people_selection):
+    for n in people:
+        del n[0]
+    return people_selection
+
+
+
+#def mutace(new_selection):
+    #mutace_jedinec = new_selection[randint(0, NUM_OF_PEOPLE - 1)][1]
+    #print(mutace_jedinec)
+    #poloha_prvek1 = randint(0, len(mutace_jedinec))
+    #poloha_prvek2 = random.choice([i for i in range(0,len(mutace_jedinec)) if i not in [poloha_prvek1]])
+
     # new_selection.append([])
     # new_selection[len(new_selection) - 1].append(mutace_jedinec)
-    return new_selection
+    #return new_selection
+
+def krizeni(new_selection):
+    zkrizeny_jedinec = new_selection.pop(randint(0, NUM_OF_PEOPLE - 1))
+    print(zkrizeny_jedinec)
+    random.shuffle(zkrizeny_jedinec[0])
+    print(zkrizeny_jedinec)
+    return zkrizeny_jedinec
+
+
+
+
 
 def main(LIST_OF_CITIES):
     people_generating()
@@ -72,9 +101,13 @@ def main(LIST_OF_CITIES):
     print(people)
     print(people_selection)
     new_selection = selection_final(people_selection)
+    odstraneni_kvality(people_selection)
     print(new_selection)
-    mutace(new_selection)
+    #mutace(new_selection)
+    #print(new_selection)
+    krizeni(new_selection)
     print(new_selection)
+
 
 if __name__ == "__main__":
     main(LIST_OF_CITIES)
