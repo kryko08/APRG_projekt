@@ -72,27 +72,39 @@ def odstraneni_kvality(people_selection):
 
 
 
-#def mutace(new_selection):
-    #mutace_jedinec = new_selection[randint(0, NUM_OF_PEOPLE - 1)][1]
-    #print(mutace_jedinec)
-    #poloha_prvek1 = randint(0, len(mutace_jedinec))
-    #poloha_prvek2 = random.choice([i for i in range(0,len(mutace_jedinec)) if i not in [poloha_prvek1]])
-    # mutace_prvek[poloha_prvek1], mutace_prvek[poloha_prvek2] = mutace_prvek[poloha_prvek2], mutace_prvek[poloha_prvek1]
-    # new_selection.append([])
-    # new_selection[len(new_selection) - 1].append(mutace_jedinec)
+def mutace(new_selection):
+    mutace_jedinec = new_selection.pop(randint(0, NUM_OF_PEOPLE - 1))
+    print(mutace_jedinec)
+    print (new_selection)
+    poloha_prvek1 = randint(0, len(mutace_jedinec[0])-1)
+    poloha_prvek2 = randint(0, len(mutace_jedinec[0])-1)
+    while True:
+        if poloha_prvek1 == poloha_prvek2:
+            poloha_prvek2 = randint(0, len(mutace_jedinec))
+        else:
+            break
+    prvek = mutace_jedinec[0][poloha_prvek1]
+    print (poloha_prvek1, poloha_prvek2, prvek)
+    mutace_jedinec[0][poloha_prvek1] = mutace_jedinec[0][poloha_prvek2]
+    mutace_jedinec[0][poloha_prvek2] = prvek
+    new_selection.extend(mutace_jedinec)
+    return new_selection
+
+def krizeni(people):
+    #nahodne_cislo = randint(0, NUM_OF_PEOPLE - 1)
+    #zkrizeny_jedinec = new_selection[nahodne_cislo]
+    #print(zkrizeny_jedinec)
+    #zkrizeny_jedinec = zkrizeny_jedinec[0]
+    random.shuffle(people[3])
+    #print(zkrizeny_jedinec)
+    #new_selection[nahodne_cislo]= zkrizeny_jedinec
+    return people
+    #random.shuffle(new_selection[randint(0, NUM_OF_PEOPLE - 1)])
     #return new_selection
 
-# def krizeni(new_selection):
-    # zkrizeny_jedinec = new_selection.pop(randint(0, NUM_OF_PEOPLE - 1))
-    # print(zkrizeny_jedinec)
-    # random.shuffle(zkrizeny_jedinec[0])
-    # print(zkrizeny_jedinec)
-    # new_selection.append(zkrizeny_jedinec)
-    # return new_selection
-
-    # random.shuffle(new_selection[randint(0, NUM_OF_PEOPLE - 1)])
-    # return new_selection
-
+#def krizeni(new_selection):
+#    zkrizeny_jedinec = new_selection.pop[randint(0, NUM_OF_PEOPLE - 1)]
+#    nahodne_cislo= 0
 
 def main(LIST_OF_CITIES):
     people_generating()
@@ -100,14 +112,13 @@ def main(LIST_OF_CITIES):
     quality_sorting(people)
     people_selection = selection(people, NUM_OF_PEOPLE)
     print(people)
-    print(people_selection)
     new_selection = selection_final(people_selection)
     odstraneni_kvality(people_selection)
     print(new_selection)
-    #mutace(new_selection)
-    #print(new_selection)
-    # krizeni(new_selection)
-    # print(new_selection)
+    mutace(new_selection)
+    print(new_selection)
+    #krizeni(people)
+    #print(people)
 
 
 if __name__ == "__main__":
