@@ -3,7 +3,7 @@ import random
 #with open ("pokus.txt", "r") as txt_file:
 #    mesta = txt_file.read()
 
-LIST_OF_CITIES = [[0, 1, 2], [1, 0, 3], [2, 3, 0]]
+LIST_OF_CITIES = [[0, 1, 2, 3, 4, 5], [1, 0, 6, 7, 8, 9], [2, 6, 0, 10, 11, 12], [3, 7, 10, 0, 13, 14], [4, 8, 11, 13, 0, 15], [5, 9, 12, 14, 15, 0]]
 NUM_OF_CITIES = len(LIST_OF_CITIES)
 NUM_OF_PEOPLE = 3
 people = []
