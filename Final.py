@@ -59,17 +59,9 @@ def selection(people, NUM_OF_PEOPLE):
 def selection_final(people_selection):
     zuzeni_populace = []
     delka = NUM_OF_PEOPLE
-    rand_prvek = random.sample(people_selection, k = delka)
+    rand_prvek = random.choices(people_selection, k = delka)
     zuzeni_populace.extend(rand_prvek)
     return zuzeni_populace
-    #n = 0
-    #while n < delka :
-        #random_index = randint(0, NUM_OF_PEOPLE - 1)
-        #random_clovek = people_selection[random_index]
-        #zuzeni_populace.append(random_clovek)
-        #people_selection.remove(random_clovek)
-        #n = n + 1
-    #return zuzeni_populace
 
 
 
@@ -90,13 +82,13 @@ def odstraneni_kvality(people_selection):
     # new_selection[len(new_selection) - 1].append(mutace_jedinec)
     #return new_selection
 
-def krizeni(new_selection):
-    zkrizeny_jedinec = new_selection.pop(randint(0, NUM_OF_PEOPLE - 1))
-    print(zkrizeny_jedinec)
-    random.shuffle(zkrizeny_jedinec[0])
-    print(zkrizeny_jedinec)
-    new_selection.append(zkrizeny_jedinec)
-    return new_selection
+# def krizeni(new_selection):
+    # zkrizeny_jedinec = new_selection.pop(randint(0, NUM_OF_PEOPLE - 1))
+    # print(zkrizeny_jedinec)
+    # random.shuffle(zkrizeny_jedinec[0])
+    # print(zkrizeny_jedinec)
+    # new_selection.append(zkrizeny_jedinec)
+    # return new_selection
 
     # random.shuffle(new_selection[randint(0, NUM_OF_PEOPLE - 1)])
     # return new_selection
@@ -114,8 +106,8 @@ def main(LIST_OF_CITIES):
     print(new_selection)
     #mutace(new_selection)
     #print(new_selection)
-    krizeni(new_selection)
-    print(new_selection)
+    # krizeni(new_selection)
+    # print(new_selection)
 
 
 if __name__ == "__main__":
