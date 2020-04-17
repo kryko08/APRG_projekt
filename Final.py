@@ -57,14 +57,10 @@ def selection(people, NUM_OF_PEOPLE):
 
 
 def selection_final(people_selection):
-    n = 0
+    zuzeni_populace = []
     delka = NUM_OF_PEOPLE
-    zuzeni_populace = [[], [], []]
-    while n < delka:
-        random_index = randint(0, len(people_selection) - 1)
-        random_clovek = list(people_selection[random_index])
-        zuzeni_populace[n] = list(random_clovek[0])
-        n += 1
+    rand_prvek = random.choices(people_selection, k = delka)
+    zuzeni_populace.extend(rand_prvek)
     return zuzeni_populace
 
 
@@ -80,38 +76,35 @@ def mutace(new_selection):
     mutace_jedinec = new_selection.pop(randint(0, NUM_OF_PEOPLE - 1))
     print(mutace_jedinec)
     print (new_selection)
-    poloha_prvek1 = randint(0, len(mutace_jedinec)-1)
-    poloha_prvek2 = randint(0, len(mutace_jedinec)-1)
+    poloha_prvek1 = randint(0, len(mutace_jedinec[0])-1)
+    poloha_prvek2 = randint(0, len(mutace_jedinec[0])-1)
     while True:
         if poloha_prvek1 == poloha_prvek2:
-            poloha_prvek2 = randint(0, len(mutace_jedinec)-1)
+            poloha_prvek2 = randint(0, len(mutace_jedinec))
         else:
             break
-    prvek = mutace_jedinec[poloha_prvek1]
+    prvek = mutace_jedinec[0][poloha_prvek1]
     print (poloha_prvek1, poloha_prvek2, prvek)
-    mutace_jedinec[poloha_prvek1] = mutace_jedinec[poloha_prvek2]
-    mutace_jedinec[poloha_prvek2] = prvek
-    new_selection.extend([mutace_jedinec])
+    mutace_jedinec[0][poloha_prvek1] = mutace_jedinec[0][poloha_prvek2]
+    mutace_jedinec[0][poloha_prvek2] = prvek
+    new_selection.extend(mutace_jedinec)
     return new_selection
 
-def krizeni(new_selection):
-    nahodne_cislo = randint(0, NUM_OF_PEOPLE - 1)
-    zkrizeny_jedinec = new_selection[nahodne_cislo]
-    print(zkrizeny_jedinec)
-    # random_element = randint(0, len(zkrizeny_jedinec)-1)
-    # rand_cislo = zkrizeny_jedinec[random_element]
-    # interval = (rand_cislo, rand_cislo + 2)
-    # if rand_cislo == zkrizeny_jedinec[-1] or zkrizeny_jedinec[-2]:
-    #     interval = (rand_cislo, rand_cislo - 2)
-    # print(interval)
-    # random.shuffle(interval)
-    # print(interval)
-
-    # random.shuffle(zkrizeny_jedinec)
-    # print(zkrizeny_jedinec)
+def krizeni(people):
+    #nahodne_cislo = randint(0, NUM_OF_PEOPLE - 1)
+    #zkrizeny_jedinec = new_selection[nahodne_cislo]
+    #print(zkrizeny_jedinec)
+    #zkrizeny_jedinec = zkrizeny_jedinec[0]
+    random.shuffle(people[3])
+    #print(zkrizeny_jedinec)
     #new_selection[nahodne_cislo]= zkrizeny_jedinec
-    return new_selection
+    return people
+    #random.shuffle(new_selection[randint(0, NUM_OF_PEOPLE - 1)])
+    #return new_selection
 
+#def krizeni(new_selection):
+#    zkrizeny_jedinec = new_selection.pop[randint(0, NUM_OF_PEOPLE - 1)]
+#    nahodne_cislo= 0
 
 def main(LIST_OF_CITIES):
     people_generating()
@@ -119,13 +112,13 @@ def main(LIST_OF_CITIES):
     quality_sorting(people)
     people_selection = selection(people, NUM_OF_PEOPLE)
     print(people)
-    odstraneni_kvality(people_selection)
     new_selection = selection_final(people_selection)
+    odstraneni_kvality(people_selection)
     print(new_selection)
     mutace(new_selection)
     print(new_selection)
-    # krizeni(new_selection)
-    # print(new_selection)
+    #krizeni(people)
+    #print(people)
 
 
 if __name__ == "__main__":
