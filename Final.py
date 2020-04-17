@@ -78,6 +78,7 @@ def odstraneni_kvality(people_selection):
 
 
 def mutace(new_selection):
+    print("dole je funkce mutace")
     mutace_jedinec = new_selection.pop(randint(0, NUM_OF_PEOPLE - 1))
     print(mutace_jedinec)
     print (new_selection)
@@ -95,13 +96,33 @@ def mutace(new_selection):
     new_selection.extend([mutace_jedinec])
     return new_selection
 
-def krizeni(people):
+def krizeni(new_selection):
+    list_na_shuffle = []
     nahodne_cislo = randint(0, NUM_OF_PEOPLE - 1)
     zkrizeny_jedinec = new_selection[nahodne_cislo]
-    print(zkrizeny_jedinec)
-    # random_element = randint(0, len(zkrizeny_jedinec)-1)
-    # rand_cislo = zkrizeny_jedinec[random_element]
-    # interval = (rand_cislo, rand_cislo + 2)
+    print("Dole je funkce krizeni")
+    print("tohle je random jedinec ke krizeni" , zkrizeny_jedinec)
+    random_index = randint(0, len(zkrizeny_jedinec)-2)
+    print("random index je", random_index)
+
+    prvni_cislo = zkrizeny_jedinec.pop(random_index)
+    druhe_cislo = zkrizeny_jedinec.pop(random_index)
+    treti_cislo = zkrizeny_jedinec.pop(random_index)
+
+    list_na_shuffle.append(prvni_cislo)
+    list_na_shuffle.append(druhe_cislo)
+    list_na_shuffle.append(treti_cislo)
+
+    print("toto je list na shuffle", list_na_shuffle)
+
+    random.shuffle(list_na_shuffle)
+    print("toto je list po shufflu", list_na_shuffle)
+    print("random jedinec nyní", zkrizeny_jedinec)
+
+    for i in reversed(list_na_shuffle):
+        zkrizeny_jedinec.insert(random_index, i)
+    print("zkrizeny jedinec po insert", zkrizeny_jedinec)
+
     # if rand_cislo == zkrizeny_jedinec[-1] or zkrizeny_jedinec[-2]:
     #     interval = (rand_cislo, rand_cislo - 2)
     # print(interval)
@@ -125,7 +146,7 @@ def main(LIST_OF_CITIES):
     print(new_selection)
     mutace(new_selection)
     print(new_selection)
-    #krizeni(people)
+    krizeni(new_selection)
     #print(people)
 
 
