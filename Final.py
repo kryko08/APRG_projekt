@@ -102,7 +102,7 @@ def krizeni(new_selection):
     zkrizeny_jedinec = new_selection[nahodne_cislo]
     print("Dole je funkce krizeni")
     print("tohle je random jedinec ke krizeni" , zkrizeny_jedinec)
-    random_index = randint(0, len(zkrizeny_jedinec)-2)
+    random_index = randint(0, len(zkrizeny_jedinec)-3)
     print("random index je", random_index)
 
     prvni_cislo = zkrizeny_jedinec.pop(random_index)
