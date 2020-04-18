@@ -60,7 +60,11 @@ def selection_final(people_selection):
     zuzeni_populace = []
     delka = NUM_OF_PEOPLE
     n = 0
-    zuzeni_populace = [[], [], []]
+    zuzeni_populace = []
+    for x in range(NUM_OF_PEOPLE) :
+        zuzeni_populace.append([])
+    print("funguje zavorka?", zuzeni_populace)
+
     while n < delka:
         random_index = randint(0, len(people_selection) - 1)
         random_clovek = list(people_selection[random_index])
