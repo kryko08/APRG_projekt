@@ -6,6 +6,7 @@ import random
 LIST_OF_CITIES = [[0, 1, 2, 3, 4, 5], [1, 0, 6, 7, 8, 9], [2, 6, 0, 10, 11, 12], [3, 7, 10, 0, 13, 14], [4, 8, 11, 13, 0, 15], [5, 9, 12, 14, 15, 0]]
 NUM_OF_CITIES = len(LIST_OF_CITIES)
 NUM_OF_PEOPLE = 3
+POCET_ITERACI = 20
 people = []
 
 
@@ -56,9 +57,21 @@ def selection(people, NUM_OF_PEOPLE):
             people_selection.append(people[element])
             index = index + 1
     print("tady se to vynásobí", people_selection)
-    return people_selection
+    people.clear()
+    people.extend(people_selection)
+    print(people)
+    return people
 
 
+def odstraneni_kvality(people):
+    print(len(people))
+    n = 0
+    for nn in range (0, NUM_OF_PEOPLE):
+        print(n)
+        del people[n][0]
+        print(people)
+        n = n + NUM_OF_PEOPLE - nn
+    return people
 
 
 def selection_final(people_selection):
@@ -77,14 +90,6 @@ def selection_final(people_selection):
         n += 1
     print("tady se pocet zmensi", zuzeni_populace)
     return zuzeni_populace
-
-
-
-def odstraneni_kvality(people_selection):
-    for n in people:
-        del n[0]
-    return people_selection
-
 
 
 def mutace(new_selection):
@@ -134,15 +139,6 @@ def krizeni(new_selection):
         zkrizeny_jedinec.insert(random_index, i)
     print("zkrizeny jedinec po insert", zkrizeny_jedinec)
 
-    # if rand_cislo == zkrizeny_jedinec[-1] or zkrizeny_jedinec[-2]:
-    #     interval = (rand_cislo, rand_cislo - 2)
-    # print(interval)
-    # random.shuffle(interval)
-    # print(interval)
-
-    # random.shuffle(zkrizeny_jedinec)
-    # print(zkrizeny_jedinec)
-    # new_selection[nahodne_cislo]= zkrizeny_jedinec
     return new_selection
 
 
@@ -150,11 +146,12 @@ def main(LIST_OF_CITIES):
     people_generating()
     value(people, LIST_OF_CITIES)
     quality_sorting(people)
-    people_selection = selection(people, NUM_OF_PEOPLE)
-    odstraneni_kvality(people_selection)
-    new_selection = selection_final(people_selection)
-    mutace(new_selection)
-    krizeni(new_selection)
+    selection(people, NUM_OF_PEOPLE)
+    odstraneni_kvality(people)
+    print (people)
+    #new_selection = selection_final(people_selection)
+    #mutace(new_selection)
+    #krizeni(new_selection)
     #print(people)
 
 
