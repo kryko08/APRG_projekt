@@ -17,6 +17,18 @@ iterations = []
 
 
 def people_generating():
+    """
+    Funkce generování jedinců
+
+    Funkce vytvoří populaci, ve které bude každý člověk reprezentován
+    vnořeným seznamem s čísly, které popisují jakými městy v jakém pořadí daný
+    jedinec prošel.
+
+    Returns:
+    people
+
+    """
+
     for n in range(NUM_OF_PEOPLE):
         numbers = []
         person = []
@@ -33,6 +45,21 @@ def people_generating():
 
 
 def value(people, LIST_OF_CITIES):
+    """
+    Funkce přiřazení kvality
+
+    Funkce přiřadí každému jedinci jeho kvalitu, což je vzdálenost,
+    kterou daný jedinec ušel při svém náhodném průchodu městy.
+    Čím je ušlá vzdálenost větší, tím menší je kvalita jedince.
+
+    Parameters:
+    people, LIST_OF_CITIES
+
+    Returns:
+    people
+
+    """
+
     for m in range(NUM_OF_PEOPLE):
         quality = 0
         for m1 in range(NUM_OF_CITIES - 1):
@@ -43,6 +70,21 @@ def value(people, LIST_OF_CITIES):
 
 
 def quality_sorting(people):
+    """
+    Fuknce seřazení jedinců
+
+    Fuknce seřadí jedince podle kvality. Nejkvalitnější jedinec, to je jedinec
+    s nejkratší ušlou vzdáleností, se zařadí na první místo v seznamu.
+    Nejméně kvalitní jedinec na poslední.
+
+    Parameters:
+    people
+
+    Returns:
+    people
+
+    """
+
     sorted_people = sorted(people)
     people.clear()
     people.extend(sorted_people)
@@ -51,6 +93,21 @@ def quality_sorting(people):
 
 
 def selection(people, NUM_OF_PEOPLE):
+    """
+    Funkce k roznásobení jedinců
+
+    Funkce každého jedince zkopíruje do nového seznamu právě tolikrát
+    podle jeho pozice v seznamu people. Jedinec s největší kvalitou
+    bude v novém seznamu zastoupen nejvíckrát, nejméně kvalitní jedinec nejméněkrát
+
+    Parameters:
+    people, NUM_OF_PEOPLE
+
+    Returns:
+    people
+
+    """
+
     people_selection = []
     for element in range(len(people)):
         multipation = NUM_OF_PEOPLE - element
@@ -65,6 +122,8 @@ def selection(people, NUM_OF_PEOPLE):
 
 
 def value_remove(people):
+    """Funkce slouží k odstranění kvality"""
+
     n = 0
     for nn in range (0, NUM_OF_PEOPLE):
         del people[n][0]
@@ -74,6 +133,21 @@ def value_remove(people):
 
 
 def selection_final(people):
+    """
+    Funkce provádí selekci jedinců
+
+    Funkce náhodně vybere se seznamu jedince. Vzhledem k tomu,
+    že kvalitnější jedinci jsou zastoupeni vícekrát než ti méně kvalitní,
+    je i větší pravděpodobnost, že budou do nové populace vybráni.
+
+    Parameters:
+    people
+
+    Returns:
+    poeple
+
+    """
+
     population_cut = []
     n = 0
     for x in range(NUM_OF_PEOPLE):
@@ -90,6 +164,22 @@ def selection_final(people):
 
 
 def mutation(people):
+    """
+    Funkce mutace
+
+    Funkce pracuje pouze s jedním náhodným jedincem.
+    Dojde k náhodnému vybrání dvou čísel (měst) a jejich vzájemnému
+    prohození. Mění se tak cesta, kterou zmutovaný jedinec prošel.
+    To má následně vliv i na jeho kvalitu.
+
+    Parameters:
+    people
+
+    Returns:
+    people
+
+    """
+
     mutated_person = people.pop(randint(0, NUM_OF_PEOPLE - 1))
     print("tohle je zmutovany jedinec PRED MUTACI", mutated_person)
     element_position1 = randint(0, len(mutated_person)-1)
@@ -109,6 +199,21 @@ def mutation(people):
 
 
 def hybridization(people):
+    """
+    Funkce křížení
+
+    Funkce pracuje s náhodným jedincem. V jeho seznamu
+    se vyberou tři sousedící čísla a ty se mezi sebou promíchají.
+    Stejně jako mutace má tato funkce vliv na kvalitu jedince.
+
+    Parameters:
+    people
+
+    Returns:
+    people
+
+    """
+
     shuffle_list = []
     random_number = randint(0, NUM_OF_PEOPLE - 1)
     hybrid = people[random_number]
@@ -133,6 +238,8 @@ def hybridization(people):
 
 
 def avg_value(people):
+    """Funkce určí průměrnou kvalitu populace"""
+
     average = 0
     for i in range(0, len(people)):
         average = average + people[i][0]
@@ -143,6 +250,8 @@ def avg_value(people):
 
 
 def graphs():
+    """Funkce k vytvoření grafů"""
+
     plt.plot(iterations, averages)
     plt.ylabel('Avg. value')
     plt.xlabel('Iterations')
