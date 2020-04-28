@@ -1,14 +1,16 @@
 from random import randint
 import random
+import matplotlib.pyplot as plt
 #with open ("pokus.txt", "r") as txt_file:
 #    mesta = txt_file.read()
 
 LIST_OF_CITIES = [[0, 1, 2, 3, 4, 5], [1, 0, 6, 7, 8, 9], [2, 6, 0, 10, 11, 12], [3, 7, 10, 0, 13, 14], [4, 8, 11, 13, 0, 15], [5, 9, 12, 14, 15, 0]]
 NUM_OF_CITIES = len(LIST_OF_CITIES)
-NUM_OF_PEOPLE = 3
+NUM_OF_PEOPLE = 5
 POCET_ITERACI = 20
 people = []
-
+priemery = []
+iteracie = []
 
 
 def people_generating():
@@ -85,7 +87,6 @@ def selection_final(people):
 
 
 def mutace(people):
-    print("DOLE JE FUNKCE MUTACE")
     mutace_jedinec = people.pop(randint(0, NUM_OF_PEOPLE - 1))
     print("tohle je zmutovany jedinec PRED MUTACI", mutace_jedinec)
     poloha_prvek1 = randint(0, len(mutace_jedinec)-1)
@@ -108,7 +109,6 @@ def krizeni(people):
     list_na_shuffle = []
     nahodne_cislo = randint(0, NUM_OF_PEOPLE - 1)
     zkrizeny_jedinec = people[nahodne_cislo]
-    print("DOLE JE FUNKCE KRIZENI")
     print("tohle je random jedinec ke krizeni" , zkrizeny_jedinec)
     random_index = randint(0, len(zkrizeny_jedinec)-3)
     prvni_cislo = zkrizeny_jedinec.pop(random_index)
@@ -134,6 +134,7 @@ def prumerna_kvalita(people):
     for i in range(0, len(people)):
         prumer = prumer + people[i][0]
     prumer = prumer / NUM_OF_PEOPLE
+    priemery.append(prumer)
     return prumer
 
 
@@ -151,8 +152,14 @@ def main(LIST_OF_CITIES):
         selection_final(people)
         mutace(people)
         krizeni(people)
+        iteracie.append(iterace)
         iterace += 1
-    print(people)
+    value(people, LIST_OF_CITIES)
+    print('toto su finalny ludia: ', people)
+    plt.plot(iteracie, priemery)
+    plt.ylabel('Priemerna hodnota iterace')
+    plt.xlabel('iterace')
+    plt.show()
 
 
 
