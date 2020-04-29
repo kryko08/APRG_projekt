@@ -50,7 +50,7 @@ def value(people, LIST_OF_CITIES):
 
     Funkce přiřadí každému jedinci jeho kvalitu, což je vzdálenost,
     kterou daný jedinec ušel při svém náhodném průchodu městy.
-    Čím je ušlá vzdálenost větší, tím menší je kvalita jedince.
+    Čím je ušlá vzdálenost kratší, tím menší je kvalita jedince.
 
     Parameters:
     people, LIST_OF_CITIES
@@ -97,7 +97,7 @@ def selection(people, NUM_OF_PEOPLE):
     Funkce k roznásobení jedinců
 
     Funkce každého jedince zkopíruje do nového seznamu právě tolikrát
-    podle jeho pozice v seznamu people. Jedinec s největší kvalitou
+    podle jeho pozice v seznamu people. Jedinec s nejmenší kvalitou
     bude v novém seznamu zastoupen nejvíckrát, nejméně kvalitní jedinec nejméněkrát
 
     Parameters:
@@ -260,27 +260,3 @@ def graphs():
     plt.ylabel('Best value')
     plt.xlabel('Iterations')
     plt.show()
-
-
-def main(LIST_OF_CITIES):
-    people_generating()
-    iteration = 0
-    while iteration <= NUM_OF_ITERATIONS:
-        value(people, LIST_OF_CITIES)
-        print("Toto je seznam lidi po %s iteraci"%iteration, people)
-        print("Toto je prumerna kvalita:", avg_value(people))
-        quality_sorting(people)
-        selection(people, NUM_OF_PEOPLE)
-        best_value.append(people[0][0])
-        value_remove(people)
-        selection_final(people)
-        mutation(people)
-        hybridization(people)
-        iterations.append(iteration)
-        iteration += 1
-    value(people, LIST_OF_CITIES)
-    print('toto su finalny ludia: ', people)
-    graphs()
-
-#if __name__ == "__main__":
-#   main(LIST_OF_CITIES)
