@@ -1,10 +1,7 @@
 from random import randint
 import random
 import matplotlib.pyplot as plt
-import csv
 
-#with open ("pokus.txt", "r") as txt_file:
-#mesta = txt_file.read()www
 
 LIST_OF_CITIES = [[0, 1, 2, 3, 4, 5], [1, 0, 6, 7, 8, 9], [2, 6, 0, 10, 11, 12], [3, 7, 10, 0, 13, 14], [4, 8, 11, 13, 0, 15], [5, 9, 12, 14, 15, 0]]
 NUM_OF_CITIES = len(LIST_OF_CITIES)
@@ -260,3 +257,28 @@ def graphs():
     plt.ylabel('Best value')
     plt.xlabel('Iterations')
     plt.show()
+
+
+
+def main(LIST_OF_CITIES):
+    people_generating()
+    iteration = 0
+    while iteration <= NUM_OF_ITERATIONS:
+        value(people, LIST_OF_CITIES)
+        print("toto je seznam lidi po %s iteraci"%iteration, people)
+        print("toto je prumerna kvalita:", avg_value(people))
+        quality_sorting(people)
+        selection(people, NUM_OF_PEOPLE)
+        best_value.append(people[0][0])
+        value_remove(people)
+        selection_final(people)
+        mutation(people)
+        hybridization(people)
+        iterations.append(iteration)
+        iteration += 1
+    value(people, LIST_OF_CITIES)
+    print('toto jsou finalni lide: ', people)
+    graphs()
+
+if __name__ == "__main__":
+    main(LIST_OF_CITIES)
