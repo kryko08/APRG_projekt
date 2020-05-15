@@ -1,8 +1,7 @@
 from random import randint
 import matplotlib.pyplot as plt
 import importlib
-from APRG_projekt.Final import people, NUM_OF_ITERATIONS, NUM_OF_PEOPLE, best_value, iterations, LIST_OF_CITIES
-from APRG_projekt.Final import people_generating, value, quality_sorting, selection, avg_value, value_remove, selection_final, mutation, hybridization, graphs
+from APRG_projekt.Final import *
 
 
 
@@ -23,6 +22,7 @@ def main(LIST_OF_CITIES):
         iterations.append(iteration)
         iteration += 1
     value(people, LIST_OF_CITIES)
+    quality_sorting(people)
     print('toto su finalny ludia: ', people)
     graphs()
 

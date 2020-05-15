@@ -1,12 +1,13 @@
 from random import randint
 import random
 import matplotlib.pyplot as plt
+from APRG_projekt.Cities import *
 
 
-LIST_OF_CITIES = [[0, 1, 2, 3, 4, 5], [1, 0, 6, 7, 8, 9], [2, 6, 0, 10, 11, 12], [3, 7, 10, 0, 13, 14], [4, 8, 11, 13, 0, 15], [5, 9, 12, 14, 15, 0]]
+LIST_OF_CITIES = LIST_OF_CITIES3
 NUM_OF_CITIES = len(LIST_OF_CITIES)
 NUM_OF_PEOPLE = 20
-NUM_OF_ITERATIONS = 300
+NUM_OF_ITERATIONS = 200
 people = []
 averages = []
 best_value = []
@@ -277,6 +278,7 @@ def main(LIST_OF_CITIES):
         iterations.append(iteration)
         iteration += 1
     value(people, LIST_OF_CITIES)
+    quality_sorting(people)
     print('toto jsou finalni lide: ', people)
     graphs()
 
