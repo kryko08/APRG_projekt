@@ -13,7 +13,7 @@ averages = []
 best_value = []
 iterations = []
 
-
+#Krajco
 def people_generating():
     """
     Funkce generování jedinců
@@ -41,7 +41,7 @@ def people_generating():
     return (people)
 
 
-
+#Krajco
 def value(people, LIST_OF_CITIES):
     """
     Funkce přiřazení kvality
@@ -66,7 +66,7 @@ def value(people, LIST_OF_CITIES):
     return(people)
 
 
-
+#Krmela
 def quality_sorting(people):
     """
     Fuknce seřazení jedinců
@@ -89,7 +89,7 @@ def quality_sorting(people):
     return people
 
 
-
+#Krmela
 def selection(people, NUM_OF_PEOPLE):
     """
     Funkce k roznásobení jedinců
@@ -118,7 +118,7 @@ def selection(people, NUM_OF_PEOPLE):
     return people
 
 
-
+#Krmela
 def value_remove(people):
     """Funkce slouží k odstranění kvality"""
 
@@ -129,7 +129,7 @@ def value_remove(people):
     return people
 
 
-
+#Kopecny
 def selection_final(people):
     """
     Funkce provádí selekci jedinců
@@ -160,7 +160,7 @@ def selection_final(people):
     return people
 
 
-
+#Krajco
 def mutation(people):
     """
     Funkce mutace
@@ -195,7 +195,7 @@ def mutation(people):
     return people
 
 
-
+#Kopecny
 def hybridization(people):
     """
     Funkce křížení
@@ -234,7 +234,7 @@ def hybridization(people):
     return people
 
 
-
+#Kopecny
 def avg_value(people):
     """Funkce určí průměrnou kvalitu populace"""
 
@@ -246,7 +246,7 @@ def avg_value(people):
     return average
 
 
-
+#Krajco
 def graphs():
     """Funkce k vytvoření grafů"""
 
@@ -260,7 +260,7 @@ def graphs():
     plt.show()
 
 
-
+#Krmela
 def main(LIST_OF_CITIES):
     people_generating()
     iteration = 0
