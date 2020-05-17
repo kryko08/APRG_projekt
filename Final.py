@@ -1,7 +1,7 @@
 from random import randint
 import random
 import matplotlib.pyplot as plt
-from APRG_projekt.Cities import *
+from Cities import *
 
 
 LIST_OF_CITIES = LIST_OF_CITIES3
@@ -260,27 +260,3 @@ def graphs():
     plt.show()
 
 
-#Krmela
-def main(LIST_OF_CITIES):
-    people_generating()
-    iteration = 0
-    while iteration <= NUM_OF_ITERATIONS:
-        value(people, LIST_OF_CITIES)
-        print("toto je seznam lidi po %s iteraci"%iteration, people)
-        print("toto je prumerna kvalita:", avg_value(people))
-        quality_sorting(people)
-        selection(people, NUM_OF_PEOPLE)
-        best_value.append(people[0][0])
-        value_remove(people)
-        selection_final(people)
-        mutation(people)
-        hybridization(people)
-        iterations.append(iteration)
-        iteration += 1
-    value(people, LIST_OF_CITIES)
-    quality_sorting(people)
-    print('toto jsou finalni lide: ', people)
-    graphs()
-
-if __name__ == "__main__":
-    main(LIST_OF_CITIES)

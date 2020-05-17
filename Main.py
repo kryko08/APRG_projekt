@@ -1,4 +1,4 @@
-from APRG_projekt.Final import *
+from Final import *
 
 
 
