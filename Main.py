@@ -1,6 +1,3 @@
-from random import randint
-import matplotlib.pyplot as plt
-import importlib
 from APRG_projekt.Final import *
 
 
