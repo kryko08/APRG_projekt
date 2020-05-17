@@ -19,8 +19,8 @@ def people_generating():
     Funkce generování jedinců
 
     Funkce vytvoří populaci, ve které bude každý člověk reprezentován
-    vnořeným seznamem s čísly, které popisují jakými městy v jakém pořadí daný
-    jedinec prošel.
+    vnořeným seznamem s čísly, které popisují jakými městy
+    v jakém pořadí daný jedinec prošel.
 
     Returns:
     people
