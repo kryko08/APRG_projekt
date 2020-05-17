@@ -21,6 +21,7 @@ def main(LIST_OF_CITIES):
     value(people, LIST_OF_CITIES)
     quality_sorting(people)
     print('toto su finalny ludia: ', people)
+    route()
     graphs()
 
 if __name__ == "__main__":

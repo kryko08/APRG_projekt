@@ -259,4 +259,9 @@ def graphs():
     plt.xlabel('Iterations')
     plt.show()
 
+def route():
+    route_final = people[0][1]
+    for x in range (0,NUM_OF_CITIES):
+        print (CITY_NAMES[route_final[x]-1], end=', ')
+
 
